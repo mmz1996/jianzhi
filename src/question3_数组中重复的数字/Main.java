@@ -7,7 +7,7 @@ package question3_数组中重复的数字;
  * @Date 2020/4/11 14:25
  * @Created by mmz
  */
-public class Main {
+public class  Main {
     public static int Core(int[] arr){
         for(int i = 0;i<arr.length;++i){
             while (arr[i] !=i){
