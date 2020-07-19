@@ -1,4 +1,4 @@
-package question30_contain_min_stack;
+package question30_包含min的函数的栈;
 
 import java.util.Stack;
 

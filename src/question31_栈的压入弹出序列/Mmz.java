@@ -3,26 +3,25 @@ package question31_栈的压入弹出序列;
 import java.util.Stack;
 
 /**
- * @Classname Main
+ * @Classname Mmz
  * @Description TODO
- * @Date 2020/4/11 23:16
+ * @Date 2020/7/19 20:18
  * @Created by mmz
  */
-public class Main {
+public class Mmz {
     static Stack<Integer> stack = new Stack<>();
 
-    static boolean Core(int[] arr1,int[] arr2){
+    static boolean Core(int[] num1,int[] num2){
         int j = 0;
-        for(int i = 0;i<arr1.length;++i){
-            stack.push(arr1[i]);
-            while(!stack.isEmpty() && stack.peek() == arr2[j]){
+        for(int i= 0;i<num1.length;++i){
+            stack.push(num1[i]);
+            while(!stack.isEmpty() && stack.peek() == num2[j]){
                 stack.pop();
                 j++;
             }
         }
         return stack.isEmpty();
     }
-
     public static void main(String[] args) {
         int[] arr1 = new int[]{1,2,3,4,5};
         int[] arr2 =new int[]{4,5,3,2,1};

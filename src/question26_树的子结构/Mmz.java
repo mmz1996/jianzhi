@@ -1,12 +1,12 @@
 package question26_树的子结构;
 
 /**
- * @Classname Main
+ * @Classname Mmz
  * @Description TODO
- * @Date 2020/4/11 21:58
+ * @Date 2020/7/19 15:41
  * @Created by mmz
  */
-public class Main {
+public class Mmz {
     static class  TreeNode{
         int val;
         TreeNode left = null;
@@ -25,41 +25,36 @@ public class Main {
                     '}';
         }
     }
-
-    static boolean Core(TreeNode root1,TreeNode root2){
-        boolean result = false;
-        if(root1 != null && root2 != null){
-            if(root1.val == root2.val){
-                result = Cores(root1,root2);
-            }
-            if(!result){
-                result = Core(root1.right,root2);
-            }
-            if(!result){
-                result = Core(root1.left,root2);
-            }
+    static boolean Core(TreeNode A ,TreeNode B){
+        if(A == null){
+            return false;
         }
-        return result;
-
-    }
-
-    static boolean Cores(TreeNode root1,TreeNode root2){
-        boolean flag = false;
-        if(root2 == null){
+        if(B == null){
             return true;
         }
-        if(root1 == null && root2 != null){
-            return false;
-        }
-        if(root1.val == root2.val){
-            return
-            Cores(root1.right,root2.right) &&
-            Cores(root1.left,root2.left);
+        boolean flag = false;
+        if(CoreRoot(A, B)){
+            return true;
         }else{
+            return Core(A.right,B) || Core(A.left,B);
+        }
+
+    }
+    static boolean CoreRoot(TreeNode A ,TreeNode B){
+        if(A == null && B != null){
             return false;
         }
-    }
+        if(B == null){
+            return true;
+        }
 
+        if(A.val == B.val){
+            return CoreRoot(A.left,B.left) && CoreRoot(A.right,B.right);
+        }else{
+            return  false;
+        }
+
+    }
     public static void main(String[] args) {
         TreeNode one = new TreeNode(8);
         TreeNode two = new TreeNode(8);
