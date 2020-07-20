@@ -4,54 +4,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Classname Main
+ * @Classname Mmz
  * @Description TODO
- * @Date 2020/4/12 15:16
+ * @Date 2020/7/20 22:22
  * @Created by mmz
  */
-public class Main {
-
+public class Mmz {
     static List<Integer> Core(int[] arr ,int k){
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        if(arr.length<k){
-            return arrayList;
+        List<Integer> list = new ArrayList<>();
+        if(arr.length <k){
+            return list;
         }
         CoreFind(arr,k,0,arr.length-1);
         for(int i = 0;i<k;++i){
-            arrayList.add(arr[i]);
+            list.add(arr[i]);
         }
-        return arrayList;
+        return list;
     }
 
     static void CoreFind(int[] arr,int k,int start,int end){
         if(start<end){
-            int pos = CoreFindK(arr,start,end);
+            int pos = CoreFindk(arr,start,end);
             if(pos == k-1){
                 return;
-            }else if(pos<k-1){
-                CoreFind(arr,k,k+1,end);
+            }else if(pos < k-1){
+                CoreFind(arr,k,pos+1,end);
             }else{
-                CoreFind(arr,k,start,k-1);
+                CoreFind(arr,k,start,pos-1);
             }
         }
     }
-
-    static int CoreFindK(int[] arr, int start,int end){
-        int temp = arr[start];
-        while(start<end){
-            while(start<end && arr[end]>=temp){
+    static int CoreFindk(int[] arr,int start,int end){
+        int temp =arr[start];
+        while(start < end){
+            while(start<end && arr[end] >=temp){
                 end--;
             }
             arr[start] = arr[end];
-            while(start<end && arr[start]<=temp){
+            while (start<end && arr[start] <=temp){
                 start++;
             }
             arr[end] = arr[start];
         }
-        arr[start] = temp;
+        arr[start] =temp;
         return start;
     }
-
     public static void main(String[] args) {
         System.out.println(Core(new int[]{4, 5, 1, 6, 2, 7, 3, 8,9,0}, 7));
     }
